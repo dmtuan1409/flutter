@@ -14,6 +14,7 @@ Widget actionButton(IconData icon, String actionTitle, Color iconColor , double 
         actionTitle,
         style: TextStyle(
           color: Colors.black,
+          fontSize: 9
         ),
       ),
     ),

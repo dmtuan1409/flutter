@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'actionbtn.dart';
+import 'show_images.dart';
 
 //the feed box will have for parameters :
 // the user name , the user avatar, the pub date, the content text and content img
 Widget feedBox(String avatarUrl, String userName, String date,
-    String contentText, String contentImg) {
+    String contentText, List<String> contentImg) {
   return Container(
     margin: EdgeInsets.only(bottom: 5.0),
     width: double.infinity,
@@ -17,15 +18,15 @@ Widget feedBox(String avatarUrl, String userName, String date,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left:8),
+          padding: const EdgeInsets.only(left: 8, top: 10),
           child: Row(
             children: [
               CircleAvatar(
                 backgroundImage: NetworkImage(avatarUrl),
-                radius: 25.0,
+                radius: 20.0,
               ),
               SizedBox(
-                width: 10.0,
+                width: 12.0,
               ),
               Expanded(
                 child: Column(
@@ -36,7 +37,7 @@ Widget feedBox(String avatarUrl, String userName, String date,
                       userName,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 18.0,
+                        fontSize: 14.0,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -47,7 +48,7 @@ Widget feedBox(String avatarUrl, String userName, String date,
                       date,
                       style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 16.0,
+                        fontSize: 12.0,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -65,41 +66,54 @@ Widget feedBox(String avatarUrl, String userName, String date,
             padding: const EdgeInsets.only(left: 8),
             child: Text(
               contentText,
-              style: TextStyle(color: Colors.black, fontSize: 16.0),
+              style: TextStyle(color: Colors.black, fontSize: 14.0),
             ),
           ),
         SizedBox(
           height: 10.0,
         ),
-        if (contentImg != "") Image.network(contentImg),
+        if (contentImg.length == 1)
+          OneImage(
+            images: contentImg,
+          )
+        else if (contentImg.length == 2)
+          TwoImage(
+            images: contentImg,
+          )
+        else if (contentImg.length == 3)
+          ThreeImage(
+            images: contentImg,
+          )
+        else if (contentImg.length == 4)
+          FourImage(
+            images: contentImg,
+          ),
         SizedBox(
           height: 5.0,
         ),
-
         Row(
           children: [
             FlatButton.icon(
-              icon:Icon(Icons.favorite_border,size: 30),
+              icon: Icon(Icons.favorite_border, size: 25),
               label: Text("1"),
               padding: EdgeInsets.only(left: 2),
             ),
             FlatButton.icon(
-              icon:Icon(Icons.comment_outlined,size: 30),
+              icon: Icon(Icons.comment_outlined, size: 25),
               label: Text("1"),
-              padding: EdgeInsets.only(left: 12),
+              padding: EdgeInsets.only(left: 10),
             ),
             // SizedBox(
             //   width: 140.0,
             // ),
             FlatButton.icon(
-              icon:Icon(Icons.keyboard_control,size: 30),
+              icon: Icon(Icons.keyboard_control, size: 25),
               label: Text(" "),
-              padding: EdgeInsets.only(left: 190),
+              padding: EdgeInsets.only(left: 140),
             ),
           ],
         )
       ],
     ),
   );
-
 }
