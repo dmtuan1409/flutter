@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class OneImage extends StatelessWidget {
   final List<String> images;
@@ -7,7 +8,9 @@ class OneImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Image.network(this.images[0]);
+    return Image.network(
+      this.images[0],
+    );
   }
 }
 
@@ -28,8 +31,13 @@ class TwoImage extends StatelessWidget {
           alignment: Alignment.center,
           decoration: new BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(this.images[0]), fit: BoxFit.fill)),
-        ),
+                  image: NetworkImage(
+                      this.images[0],
+                  ),
+                  fit: BoxFit.fill
+              )
+            ),
+          ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.01,
         ),
@@ -38,8 +46,12 @@ class TwoImage extends StatelessWidget {
           height: 200,
           alignment: Alignment.center,
           decoration: new BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(this.images[0]), fit: BoxFit.fill)),
+
+              image: new DecorationImage(
+                  image: NetworkImage(this.images[0]),
+                  fit: BoxFit.fill
+              )
+          ),
         ),
       ],
     );
@@ -63,7 +75,9 @@ class ThreeImage extends StatelessWidget {
               alignment: Alignment.center,
               decoration: new BoxDecoration(
                   image: DecorationImage(
-                      image: NetworkImage(this.images[0]), fit: BoxFit.fill)),
+                      image: NetworkImage(this.images[0]),
+                      fit: BoxFit.fill)
+              ),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.01,
