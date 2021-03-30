@@ -39,6 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
     "https://images.unsplash.com/photo-1600008646149-eb8835bd979d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=666&q=80",
     "https://images.unsplash.com/photo-1502920313556-c0bbbcd00403?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80",
   ];
+
+  List<String> videoUrls = [
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4",
+    'https://www.sample-videos.com/video123/mp4/480/asdasdas.mp4'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,11 +134,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     children: [
                       actionButton(
-                          Icons.photo, "Đăng hình", Colors.lightGreen, 22.0),
+                          Icons.photo, "Đăng hình", Colors.lightGreen, MediaQuery.of(context).size.width * 0.06),
                       actionButton(Icons.videocam, "Đăng video",
-                          Colors.pinkAccent, 22.0),
+                          Colors.pinkAccent, MediaQuery.of(context).size.width * 0.06),
                       actionButton(Icons.color_lens, "Hình nền",
-                          Colors.purpleAccent, 22.0),
+                          Colors.purpleAccent, MediaQuery.of(context).size.width * 0.06),
                     ],
                   )
                 ],
@@ -143,19 +149,19 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 20.0,
           ),
           feedBox(avatarUrl[0], "Đào Minh Tuấn", "6 min",
-              "Sao minh đẹp trai thế nhỉ", []),
+              "Sao minh đẹp trai thế nhỉ", [], [videoUrls[0]]),
           feedBox(avatarUrl[2], "Nguyễn Quý Phúc", "Yesterday",
-              "Anh Tuấn là sư phụ của em", [storyUrl[2]]),
+              "Anh Tuấn là sư phụ của em", [storyUrl[2]], [videoUrls[1]]),
           feedBox(avatarUrl[1], "Mai Thu Trang", "6 min", "Yêu anh Tuấn vãi",
-              [storyUrl[2], storyUrl[0], storyUrl[1]]),
+              [storyUrl[2], storyUrl[0], storyUrl[1]], []),
           feedBox(avatarUrl[1], "Mai Thu Trang", "6 min", "Yêu anh Tuấn vãi",
-              [storyUrl[2], storyUrl[2]]),
+              [storyUrl[2], storyUrl[2]], []),
           feedBox(avatarUrl[2], "Nguyễn Quý Phúc", "Yesterday",
-              "Anh Tuấn là sư phụ của em", [storyUrl[2]]),
+              "Anh Tuấn là sư phụ của em", [storyUrl[2]], []),
           feedBox(avatarUrl[1], "Mai Thu Trang", "6 min", "Yêu anh Tuấn vãi",
-              [storyUrl[2], storyUrl[0], storyUrl[1]]),
+              [storyUrl[2], storyUrl[0], storyUrl[1]], []),
           feedBox(avatarUrl[1], "Mai Thu Trang", "6 min", "Yêu anh Tuấn vãi",
-              [storyUrl[2], storyUrl[0], storyUrl[1], storyUrl[0]]),
+              [storyUrl[2], storyUrl[0], storyUrl[1], storyUrl[0]], []),
         ],
       )),
       bottomNavigationBar: BottomNavigationBar(

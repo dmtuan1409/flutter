@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 import 'actionbtn.dart';
 import 'show_images.dart';
-
+import 'models/videoPlay.dart';
 //the feed box will have for parameters :
 // the user name , the user avatar, the pub date, the content text and content img
 Widget feedBox(String avatarUrl, String userName, String date,
-    String contentText, List<String> contentImg) {
+    String contentText, List<String> contentImg, List<String> contextVideo) {
   return Container(
     margin: EdgeInsets.only(bottom: 5.0),
     width: double.infinity,
@@ -88,6 +89,16 @@ Widget feedBox(String avatarUrl, String userName, String date,
           FourImage(
             images: contentImg,
           ),
+        if(contextVideo.length == 1)
+            Container(
+              width: double.infinity,
+              height: 300,
+              child: ChewieListItem(
+                videoPlayerController: VideoPlayerController.network(
+                  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                ),
+              ),
+            ),
         SizedBox(
           height: 5.0,
         ),

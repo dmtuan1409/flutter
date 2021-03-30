@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-import '../register_screen.dart';
+import 'register_screen_name.dart';
 import 'package:zalo_app/storages/token_storage.dart';
 class LoginRegister extends StatefulWidget {
   @override
@@ -77,7 +77,7 @@ class _LoginState extends State<LoginRegister> {
                     height: 50.0,
                     margin: EdgeInsets.only(top: 15.0),
                     child: FlatButton(
-                      color: Colors.white70,
+                      color: Colors.grey,
                       child: Text(
                         _logup,
                         style: TextStyle(color: Colors.black, fontSize: 15),
@@ -87,8 +87,8 @@ class _LoginState extends State<LoginRegister> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => RegisterScreen(
-                                    title: _logup,
-                                  )),
+                                language: _language,
+                              )),
                         );
                       },
                       shape: RoundedRectangleBorder(
